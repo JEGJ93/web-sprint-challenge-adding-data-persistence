@@ -21,7 +21,7 @@ function find() {
 }
 
 function findById(id) {
-    return db('task')
+    return db('tasks')
     .where({task_id: id})
     .first();
 }
