@@ -8,7 +8,8 @@ const ProjectRouter = express.Router();
 ProjectRouter.get('/', async (req, res, next) => {
     try {
         const project = await Project.find()
-        res.json(project)
+        const allProjects = project.map(project => {return {...project, project_completed: project.project_completed ? true : false}})
+        res.json(allProjects)
     } catch (err) {
         next(err)
     }
