@@ -19,7 +19,7 @@ ProjectRouter.get('/', async (req, res, next) => {
    const projectData = req.body;
     try {
        const project = await Project.add(projectData) 
-       res.json(project)
+       res.json({...project, project_completed: project.project_completed ? true : false})
     } catch (err) {
         next(err)
      //    res.status(500).json({ message: 'Failed to create project' })

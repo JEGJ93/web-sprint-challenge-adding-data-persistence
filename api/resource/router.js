@@ -17,8 +17,8 @@ ResourceRouter.get('/', async (req, res, next) => {
  ResourceRouter.post('/', async (req, res, next) => {
     const resourceData = req.body;
      try {
-        const resource = await Resource.add(resourceData) 
-        res.json(resource)
+        await Resource.add(resourceData) 
+        res.json(resourceData.resource_name)
      } catch (err) {
          next(err)
       //    res.status(500).json({ message: 'Failed to create project' })
